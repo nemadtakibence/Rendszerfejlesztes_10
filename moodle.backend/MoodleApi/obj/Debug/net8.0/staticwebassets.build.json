@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WvzKRv36HWs25fLh7nf5HGU3pTPuIpZB8rEAlb5169s=",
+  "Source": "MoodleApi",
+  "BasePath": "_content/MoodleApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
