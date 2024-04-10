@@ -32,3 +32,4 @@
 /home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/obj/Debug/net8.0/MoodleApi.genruntimeconfig.cache
 /home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/obj/Debug/net8.0/ref/MoodleApi.dll
 /home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/test.json
+/home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/MoodleApi.staticwebassets.runtime.json

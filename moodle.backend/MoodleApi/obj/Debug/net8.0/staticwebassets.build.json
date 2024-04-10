@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "WvzKRv36HWs25fLh7nf5HGU3pTPuIpZB8rEAlb5169s=",
+  "Hash": "Srva8ajkUXTGMxcvFBegOYhVPoAFgRV+OKNbd6EMhMM=",
   "Source": "MoodleApi",
   "BasePath": "_content/MoodleApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MoodleApi/wwwroot",
+      "Source": "MoodleApi",
+      "ContentRoot": "/home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/wwwroot/",
+      "BasePath": "_content/MoodleApi",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
