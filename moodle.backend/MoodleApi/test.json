@@ -1,0 +1,82 @@
+[
+    {
+      "name": "A rendszerfejlesztés haladó módszerei",
+      "code": "VEMISAB223RF",
+      "department": "VIRT",
+      "credit": 4,
+      "approved_degrees": [
+        {
+            "name": "programtervező informatikus alapképzés",
+            "code": "MI-PR-B02"
+        },
+        {
+            "name": "mérnökinformatikus alapképzés",
+            "code": "MI-IN-B02"
+        },
+        {
+            "name": "üzemmérnök-informatikus szakképzés",
+            "code": "MI-UIN-B02"
+        }
+      ],
+      "enrolled_students": [
+        {
+          "neptun": "URK2SP",
+          "name": "Kovács Bence",
+          "degree_code": "MI-PR-B02"
+        },
+        {
+            "neptun": "JFYDHN",
+            "name": "Császár Csaba Dávid",
+            "degree_code": "MI-IN-B02"
+        },
+        {
+            "neptun": "TE8R3P",
+            "name": "Szita Richárd",
+            "degree_code": "MI-IN-B02"
+        }
+      ]
+    },
+    {
+        "name": "Operációkutatás",
+        "code": "VEMIMAB244FO",
+        "department": "MT",
+        "credit": 4,
+        "approved_degrees": [
+          {
+            "name": "mérnökinformatikus alapképzés",
+            "code": "MI-IN-B02"
+          }
+        ],
+        "enrolled_students": [
+        {
+            "neptun": "JFYDHN",
+            "name": "Császár Csaba Dávid",
+            "degree_code": "MI-IN-B02"
+        },
+        {
+            "neptun": "TE8R3P",
+            "name": "Szita Richárd",
+            "degree_code": "MI-IN-B02"
+        }
+        ]
+    },
+    {
+      "name": "Haladó programozási technikák II.",
+      "code": "VEMISAB254HF",
+      "department": "RSZT",
+      "credit": 4,
+      "approved_degrees": [
+        {
+          "name": "programtervező informatikus alapképzés",
+          "code": "MI-PR-B02"
+        }
+      ],
+      "enrolled_students": [
+        {
+          "neptun": "URK2SP",
+          "name": "Kovács Bence",
+          "degree_code": "MI-PR-B02"
+        }
+      ]
+    }
+  ]
