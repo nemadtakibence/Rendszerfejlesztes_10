@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace MoodleApi.Controllers{
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TestController : ControllerBase{
         private readonly IWebHostEnvironment _hostingEnvironment;
 
