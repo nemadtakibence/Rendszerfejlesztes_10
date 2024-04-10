@@ -4,9 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moodle</title>
-    <script src="mainPage.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    
+<body onLoad="showEvents()">
+    <header>
+        <h1>Moodle</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showHome()">Kezdőlap</a></li>
+            <li><a href="#" onclick="showCourses()">Kurzusok</a></li>
+            <li><a href="#" onclick="showMyCourses()">Saját kurzusok</a></li>
+            <li><a href="#" onclick="redirectLoginPage()">Kijelentkezés</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main class="main" id="mainContent">
+            <h2>Üdvözlünk a Moodle rendszerben</h2>
+            <p>Kezdőlap.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis ultricies dolor quis ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+			Maecenas ornare suscipit orci ac cursus. Duis facilisis nulla vehicula nisi lobortis, vel fermentum eros blandit. Mauris mattis ante quis finibus venenatis. 
+			Phasellus bibendum quis mi eget pretium. Nam sit amet massa lectus. Vivamus varius interdum urna non fermentum. 
+			Morbi tincidunt, metus sit amet fermentum vulputate, ex arcu luctus ante, vitae semper urna purus id nunc. Morbi sit amet lectus eu diam malesuada suscipit.</p>
+        </main>
+
+        <div class="sidebar">
+            <div class="events" id="eventsContent">
+                <h2>Közelgő események</h2>
+                <div class="event">
+                    <h3>Esemény 1</h3>
+                    <p>Esemény 1 leírása</p>
+                </div>
+                <div class="event">
+                    <h3>Esemény 2</h3>
+                    <p>Esemény 2 leírása</p>
+                </div>
+                <div class="event">
+                    <h3>Esemény 3</h3>
+                    <p>Esemény 3 leírása</p>
+                </div>
+				<div class="event">
+                    <h3>Esemény 4</h3>
+                    <p>Esemény 4 leírása</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Moodle
+    </footer>
 </body>
 </html>
