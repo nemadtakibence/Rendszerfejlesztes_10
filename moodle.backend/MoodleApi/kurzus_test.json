@@ -1,0 +1,17 @@
+[
+    {
+        "name": "A rendszerfejlesztés haladó módszerei",
+        "code": "VEMISAB223RF",
+        "department": "VIRT"
+    },
+    {
+        "name": "Operációkutatás",
+        "code": "VEMIMAB244FO",
+        "department": "MT"
+    },
+    {
+        "name": "Haladó programozási technikák II.",
+        "code": "VEMISAB254HF",
+        "department": "RSZT"
+    }
+]

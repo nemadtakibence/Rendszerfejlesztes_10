@@ -12,14 +12,31 @@ namespace MoodleApi.Controllers{
             _hostingEnvironment = hostingEnvironment;
         }
 
+        //[EnableCors("MyAllowSpecificOrigins")] //nem szereti a fordító
         [HttpGet]
         public IActionResult ListCourses()
         {
-            return Ok();
+            var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "test.json");
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+
+            var json = System.IO.File.ReadAllText(filePath);
+            return Content(json, "application/json");
         }
-        [HttpGet("filter")]
-        public IActionResult FilterCourses(){
-            return Ok();
+        [HttpGet("filter/{dept}")]
+        public IActionResult FilterCourses(string dept){
+            var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "test.json");
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+
+            var json = System.IO.File.ReadAllText(filePath);
+            return Content(json, "application/json");
         }
     }
 }

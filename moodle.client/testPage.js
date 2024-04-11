@@ -1,5 +1,5 @@
 async function test(){
-    const textArea = document.getElementById("kimenet");
+    var textArea = document.getElementById("kimenet");
     try{
         //console.log("1");
         const data = await getData("Test");
