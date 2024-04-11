@@ -34,3 +34,6 @@
 /home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/test.json
 /home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/MoodleApi.staticwebassets.runtime.json
 /home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/kurzus_test.json
+/home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/bruh/Rendszerfejlesztes_10/moodle.backend/MoodleApi/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll

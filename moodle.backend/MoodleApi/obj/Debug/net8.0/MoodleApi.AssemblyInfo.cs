@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MoodleApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fce44fa3ee412e9c7aa2a294e0712e623c8a8cfb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0735ce92af357d7779af0e750e127d98d6e08362")]
 [assembly: System.Reflection.AssemblyProductAttribute("MoodleApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MoodleApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
