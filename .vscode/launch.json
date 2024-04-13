@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/moodle.backend/MoodleApi/bin/Debug/net8.0/MoodleApi.dll",
+            "program": "${workspaceFolder}/Moodle.API/bin/Debug/net8.0/Moodle.API.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/moodle.backend/MoodleApi",
+            "cwd": "${workspaceFolder}/Moodle.API",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

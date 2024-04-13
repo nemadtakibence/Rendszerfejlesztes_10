@@ -1,7 +1,10 @@
+using System.Security.Authentication;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Moodle.Core;
 
-namespace MoodleApi.Controllers{
+namespace Moodle.API.Controllers{
     [ApiController]
     [Route("api/[controller]")]
     public class CourseController : ControllerBase{
@@ -28,7 +31,7 @@ namespace MoodleApi.Controllers{
         }
 
         [HttpGet("dept/{dept}")]
-        public async Task<IActionResult> DeptCourses(string dept){
+        public IActionResult DeptCourses(string dept){
             var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "test.json");
 
             if (!System.IO.File.Exists(filePath))
@@ -37,7 +40,11 @@ namespace MoodleApi.Controllers{
             }
 
             var json = System.IO.File.ReadAllText(filePath);
-            return Content(json, "application/json");
+
+            var list = JsonSerializer.Deserialize<List<Course>>(json);
+            var result = list.Where( x => x.Dept==dept);
+            var final = JsonSerializer.Serialize(result);
+            return Content(final, "application/json");
         }
 
         [HttpGet("mycourses/{user}")]
@@ -50,9 +57,21 @@ namespace MoodleApi.Controllers{
             }
 
             var json = System.IO.File.ReadAllText(filePath);
-            return Content(json, "application/json");            
+
+            var list = JsonSerializer.Deserialize<List<Course>>(json);
+            List<Course> almost = new List<Course>();
+            foreach(var el in list){
+                foreach(var st in el.EnrolledStudents){
+                    if(st.Neptun.ToLower()==user.ToLower()){
+                        almost.Add(el);
+                    }
+                }
+            }
+            var final = JsonSerializer.Serialize(almost);
+            return Content(final, "application/json");            
         }
 
+        //EHHEZ AUTH KELL MAJD, ENÉLKÜL FURA LENNE
         [HttpPost("enroll/{id}")]
         public async Task<IActionResult> EnrollCourse(string id){
             var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "test.json");
@@ -63,7 +82,12 @@ namespace MoodleApi.Controllers{
             }
 
             var json = System.IO.File.ReadAllText(filePath);
-            return Content(json, "application/json");
+            var deser = JsonSerializer.Deserialize<List<Course>>(json);
+            bool ability;
+            /*foreach(var el in deser){
+                if(el.Code==id && )
+            }*/
+            return Ok();
         }
     }
 }

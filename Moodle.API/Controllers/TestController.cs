@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace MoodleApi.Controllers{
+namespace Moodle.API.Controllers{
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/Test")]
     public class TestController : ControllerBase{
         private readonly IWebHostEnvironment _hostingEnvironment;
 
@@ -23,6 +23,7 @@ namespace MoodleApi.Controllers{
             }
 
             var json = System.IO.File.ReadAllText(filePath);
+            
             return Content(json, "application/json");
         }
     }

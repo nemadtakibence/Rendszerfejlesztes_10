@@ -1,81 +1,90 @@
 [
   {
-      "name": "A rendszerfejlesztés haladó módszerei",
-      "code": "VEMISAB223RF",
-      "department": "VIRT",
-      "credit": 4,
-      "approved_degrees": [
+      "Name": "A rendszerfejlesztés haladó módszerei",
+      "Code": "VEMISAB223RF",
+      "Dept": "RSZT",
+      "Credit": 4,
+      "ApprovedDegrees": [
           {
-              "name": "programtervező informatikus alapképzés",
-              "code": "MI-PR-B02"
+              "Name": "programtervező informatikus alapképzés",
+              "Code": "MI-PR-B02"
           },
           {
-              "name": "mérnökinformatikus alapképzés",
-              "code": "MI-IN-B02"
+              "Name": "mérnökinformatikus alapképzés",
+              "Code": "MI-IN-B02"
           },
           {
-              "name": "üzemmérnök-informatikus szakképzés",
-              "code": "MI-UIN-B02"
+              "Name": "üzemmérnök-informatikus szakképzés",
+              "Code": "MI-UIN-B02"
           }
       ],
-      "enrolled_students": [
+      "EnrolledStudents": [
           {
-              "neptun": "URK2SP",
-              "name": "Kovács Bence",
-              "degree_code": "MI-PR-B02"
+              "Neptun": "URK2SP",
+              "Name": "Kovács Bence",
+              "DegreeCode": "MI-PR-B02"
           },
           {
-              "neptun": "JFYDHN",
-              "name": "Császár Csaba Dávid",
-              "degree_code": "MI-IN-B02"
+              "Neptun": "JFYDHN",
+              "Name": "Császár Csaba Dávid",
+              "DegreeCode": "MI-IN-B02"
           },
           {
-              "neptun": "TE8R3P",
-              "name": "Szita Richárd",
-              "degree_code": "MI-IN-B02"
+              "Neptun": "TE8R3P",
+              "Name": "Szita Richárd",
+              "DegreeCode": "MI-IN-B02"
+          }
+      ],
+      "Events": [
+        {
+            "Name": "Első beadandó"
+        },
+        {
+            "Name": "Második beadandó",
+            "Desc": "Adatbázis+ORM"
+        }
+      ]
+  },
+  {
+      "Name": "Operációkutatás",
+      "Code": "VEMIMAB244FO",
+      "Dept": "MT",
+      "Credit": 4,
+      "ApprovedDegrees": [
+          {
+              "Name": "mérnökinformatikus alapképzés",
+              "Code": "MI-IN-B02"
+          }
+      ],
+      "EnrolledStudents": [
+          {
+              "Neptun": "JFYDHN",
+              "Name": "Császár Csaba Dávid",
+              "DegreeCode": "MI-IN-B02"
+          },
+          {
+              "Neptun": "TE8R3P",
+              "Name": "Szita Richárd",
+              "DegreeCode": "MI-IN-B02"
           }
       ]
   },
   {
-      "name": "Operációkutatás",
-      "code": "VEMIMAB244FO",
-      "department": "MT",
+      "Name": "Haladó programozási technikák II.",
+      "Code": "VEMISAB254HF",
+      "Dept": "RSZT",
       "credit": 4,
-      "approved_degrees": [
+      "ApprovedDegrees": [
           {
-              "name": "mérnökinformatikus alapképzés",
-              "code": "MI-IN-B02"
+              "Name": "programtervező informatikus alapképzés",
+              "Code": "MI-PR-B02"
           }
       ],
-      "enrolled_students": [
+      "EnrolledStudents": [
           {
-              "neptun": "JFYDHN",
-              "name": "Császár Csaba Dávid",
-              "degree_code": "MI-IN-B02"
-          },
-          {
-              "neptun": "TE8R3P",
-              "name": "Szita Richárd",
-              "degree_code": "MI-IN-B02"
-          }
-      ]
-  },
-  {
-      "name": "Haladó programozási technikák II.",
-      "code": "VEMISAB254HF",
-      "department": "RSZT",
-      "credit": 4,
-      "approved_degrees": [
-          {
-              "name": "programtervező informatikus alapképzés",
-              "code": "MI-PR-B02"
-          }
-      ],
-      "enrolled_students": [
-          {
-              "neptun": "URK2SP",
-              "name": "Kovács Bence",
-              "degree_code": "MI-PR-B02"
+              "Neptun": "URK2SP",
+              "Name": "Kovács Bence",
+              "DegreeCode": "MI-PR-B02"
           }
       ]
   }

@@ -7,6 +7,7 @@ public class Course{
     public string Code {get;set;}
     public string Dept {get;set;}
     public int Credit {get;set;}
-    public List<string> ApprovedDegrees {get;set;}
-    public List<string>? Users {get;set;}
+    public List<Degree>? ApprovedDegrees {get;set;}
+    public List<User>? EnrolledStudents {get;set;}
+    public List<Event>? Events {get;set;}
 }
