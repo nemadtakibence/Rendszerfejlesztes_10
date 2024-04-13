@@ -12,7 +12,7 @@ namespace MoodleApi.Controllers{
             _hostingEnvironment = hostingEnvironment;
         }
 
-        //[EnableCors("MyAllowSpecificOrigins")] //nem szereti a fordító
+        
         [HttpGet]
         public IActionResult ListCourses()
         {
