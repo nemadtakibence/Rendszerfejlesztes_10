@@ -13,7 +13,7 @@ namespace MoodleApi.Controllers{
         }
 
         [HttpGet]
-        public IActionResult GetJsonFile()
+        public async Task<IActionResult> GetJsonFile()
         {
             var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "test.json");
 

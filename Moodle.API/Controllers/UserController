@@ -1,0 +1,21 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
+
+namespace MoodleApi.Controllers{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class UserController : ControllerBase{
+        private readonly IWebHostEnvironment _hostingEnvironment;
+
+        public UserController(IWebHostEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }
+
+        [HttpGet("upcoming")]
+        public async Task<IActionResult> UpcomingEvent(){
+
+            return Ok("Upcoming event");
+        }
+    }
+}
