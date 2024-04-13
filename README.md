@@ -5,4 +5,4 @@
 A Moodle.API mappában:
 dotnet run
 
-A moodle.frontend mappából a testPage.html fájlt egy böngészőben meg kell nyitni
+A moodle.client mappából a testPage.html fájlt egy böngészőben meg kell nyitni
