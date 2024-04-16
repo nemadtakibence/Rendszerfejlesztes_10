@@ -71,24 +71,11 @@ namespace Moodle.API.Controllers{
             return Content(final, "application/json");            
         }
 
-        //EHHEZ AUTH KELL MAJD, ENÉLKÜL FURA LENNE
-        [HttpPost("enroll/{id}")]
-        public async Task<IActionResult> EnrollCourse(string id){
-            var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "test.json");
-
-            if (!System.IO.File.Exists(filePath))
-            {
-                return NotFound();
-            }
-
-            var json = System.IO.File.ReadAllText(filePath);
-            var deser = JsonSerializer.Deserialize<List<Course>>(json);
-            bool ability;
-            /*foreach(var el in deser){
-                if(el.Code==id && )
-            }*/
+        [HttpGet("participants")]
+        public async Task<IActionResult> Participants(){
             return Ok();
         }
+        
     }
 }
 

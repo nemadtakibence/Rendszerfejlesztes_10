@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using System.Text.Json;
+using Moodle.Core;
 
 namespace Moodle.API.Controllers{
     [ApiController]
@@ -7,7 +9,7 @@ namespace Moodle.API.Controllers{
     public class UserController : ControllerBase{
         private readonly IWebHostEnvironment _hostingEnvironment;
 
-        //EHHEZ IS KELL MAJD AUTH
+        //EHHEZ KELL MAJD AUTH
         public UserController(IWebHostEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -18,5 +20,17 @@ namespace Moodle.API.Controllers{
 
             return Ok();
         }
+
+        [HttpPut("enroll/{id}")]
+        public async Task<IActionResult> EnrollCourse(string id){
+            
+            return Ok();
+        }
+
+        [HttpDelete("optout/{id}")]
+        public async Task<IActionResult> Optout(string id){
+            return Ok();
+        }
+        
     }
 }
