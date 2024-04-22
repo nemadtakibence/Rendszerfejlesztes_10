@@ -45,6 +45,58 @@ namespace data_nm
             }
             return ad;
         }
+        public void approved_degrees_update()
+        {
+            string connectionString = "Data Source=moodleDatabase.db;Version=3;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE approved_degrees SET course_id = @course_id WHERE id = @id";
+                string updateQuery2 = "UPDATE approved_degrees SET degree_id = @degree_id WHERE id = @id";
+
+                int idToUpdate = int.Parse(Console.ReadLine());
+                int new_course_id = int.Parse(Console.ReadLine());
+                int new_degree_id = int.Parse(Console.ReadLine());
+
+                using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@course_id", new_course_id);
+
+                    updateCommand.Parameters.AddWithValue("@id", idToUpdate);
+
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine($"Az adatbázisban {rowsAffected} rekord frissítve lett.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nincs megfelelő rekord az adatbázisban a frissítéshez.");
+                    }
+                }
+                using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery2, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@degree_id", new_degree_id);
+                    updateCommand.Parameters.AddWithValue("@id", idToUpdate);
+
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine($"Az adatbázisban {rowsAffected} rekord frissítve lett.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nincs megfelelő rekord az adatbázisban a frissítéshez.");
+                    }
+                }
+
+                connection.Close();
+            }
+        }
     }
     public class courses
     {
@@ -104,7 +156,7 @@ namespace data_nm
         }
 
         public degrees() { }
-        public List<degrees> courses_in()
+        public List<degrees> degrees_in()
         {
             List<degrees> ad = new List<degrees>();
             int id = 0;
@@ -113,7 +165,7 @@ namespace data_nm
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM courses";
+                string query = "SELECT * FROM degrees";
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -137,8 +189,8 @@ namespace data_nm
         public int course_id { get; }
         public string name { get; }
         public string description { get; }
-        public int date { get; }
-        public events(int id, int course_id, string name, string description, int date)
+        public string date { get; }
+        public events(int id, int course_id, string name, string description, string date)
         {
             this.id = id;
             this.course_id = course_id;
@@ -148,11 +200,11 @@ namespace data_nm
         }
 
         public events() { }
-        public List<events> courses_in()
+        public List<events> events_in()
         {
             List<events> ad = new List<events>();
-            int id = 0, course_id = 0, date = 0;
-            string name, description;
+            int id = 0, course_id = 0;
+            string name, description, date;
             string connectionString = "Data Source=moodleDatabase.db;Version=3;";
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -168,7 +220,7 @@ namespace data_nm
                             course_id = Convert.ToInt32(reader["course_id"]);
                             name = reader["name"].ToString();
                             description = reader["description"].ToString();
-                            date = Convert.ToInt32(reader["date"]);
+                            date = reader["date"].ToString();
                             //Console.WriteLine($"ID: {id}, Course ID: {course_id}, Name: {name}");
                             ad.Add(new events(id, course_id, name, description, date));
                         }
@@ -191,7 +243,7 @@ namespace data_nm
             this.user_id = user_id;
         }
         public mycourses() { }
-        public List<mycourses> approved_degrees_in()
+        public List<mycourses> mycourses_in()
         {
             List<mycourses> ad = new List<mycourses>();
             int id = 0, course_id = 0, user_id = 0;
@@ -199,7 +251,7 @@ namespace data_nm
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM approved_degrees";
+                string query = "SELECT * FROM mycourses";
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -208,7 +260,7 @@ namespace data_nm
                         {
                             id = Convert.ToInt32(reader["id"]);
                             course_id = Convert.ToInt32(reader["course_id"]);
-                            user_id = Convert.ToInt32(reader["degree_id"]);
+                            user_id = Convert.ToInt32(reader["user_id"]);
                             ad.Add(new mycourses(id, course_id, user_id));
                         }
                     }
@@ -235,7 +287,7 @@ namespace data_nm
         }
 
         public users() { }
-        public List<users> courses_in()
+        public List<users> users_in()
         {
             List<users> ad = new List<users>();
             int id = 0, degree_id = 0;
@@ -244,7 +296,7 @@ namespace data_nm
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM courses";
+                string query = "SELECT * FROM users";
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
@@ -253,9 +305,9 @@ namespace data_nm
                         {
                             id = Convert.ToInt32(reader["id"]);
                             name = reader["name"].ToString();
-                            username = reader["code"].ToString();
-                            password = reader["department"].ToString();
-                            degree_id = Convert.ToInt32(reader["credit"]);
+                            username = reader["username"].ToString();
+                            password = reader["password"].ToString();
+                            degree_id = Convert.ToInt32(reader["degreee_id"]);
                             ad.Add(new users(id, name, username, password, degree_id));
                         }
                     }
