@@ -13,6 +13,7 @@ namespace MainProgram
 
             approved_degrees ad = new approved_degrees();
             List<approved_degrees> app_deg = ad.approved_degrees_in();
+            //ad.approved_degrees_update();
 
             courses cr = new courses();
             List<courses> courses = cr.courses_in();
