@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moodle.API", "Moodle.API\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moodle.Core", "Moodle.Core\Moodle.Core.csproj", "{EB3A4D22-F85D-439B-B558-C377704BA4C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moodle.Data", "Moodle.Data\Moodle.Data.csproj", "{426931FC-1A2D-486D-A22D-F54CEE880C6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{EB3A4D22-F85D-439B-B558-C377704BA4C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB3A4D22-F85D-439B-B558-C377704BA4C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB3A4D22-F85D-439B-B558-C377704BA4C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{426931FC-1A2D-486D-A22D-F54CEE880C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426931FC-1A2D-486D-A22D-F54CEE880C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426931FC-1A2D-486D-A22D-F54CEE880C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426931FC-1A2D-486D-A22D-F54CEE880C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

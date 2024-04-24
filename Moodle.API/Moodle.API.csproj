@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Moodle.Core\Moodle.Core.csproj" />
+    <ProjectReference Include="..\Moodle.Data\Moodle.Data.csproj" />
   </ItemGroup>
 
 </Project>
