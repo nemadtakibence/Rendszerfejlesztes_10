@@ -1,7 +1,9 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
-using System.Data.SQLite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using data_nm;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using System.Text;
 
 namespace MainProgram
