@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Moodle.Data.Entities;
 
 namespace Moodle.Data{
-    class MoodleDbContext : DbContext{
+    public class MoodleDbContext : DbContext{
         public MoodleDbContext() { }
         public MoodleDbContext(DbContextOptions options) : base(options) { }
         public DbSet<EApproved_Degrees> Approved_Degrees {get;set;}

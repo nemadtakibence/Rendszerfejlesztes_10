@@ -3,20 +3,27 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Moodle.Core;
+using Moodle.Data;
 
 namespace Moodle.API.Controllers{
     [ApiController]
     [Route("api/[controller]")]
     public class CourseController : ControllerBase{
-        private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly MoodleDbContext context;
+        //private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public CourseController(IWebHostEnvironment hostingEnvironment)
+        public CourseController(MoodleDbContext ctxt)
         {
-            _hostingEnvironment = hostingEnvironment;
+            context=ctxt;
         }
 
+        /*public CourseController(IWebHostEnvironment hostingEnvironment)
+        {
+            _hostingEnvironment = hostingEnvironment;
+        }*/
+
         
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> ListCourses()
         {
             var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "test.json");
@@ -74,7 +81,7 @@ namespace Moodle.API.Controllers{
         [HttpGet("participants")]
         public async Task<IActionResult> Participants(){
             return Ok();
-        }
+        }*/
         
     }
 }
