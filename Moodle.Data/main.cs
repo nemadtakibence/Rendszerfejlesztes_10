@@ -2,7 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
-using data_nm;
+//using data_nm;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using System.Text;
 
@@ -13,7 +13,7 @@ namespace MainProgram
         public static void Main(string[] args)
         {
 
-            approved_degrees ad = new approved_degrees();
+            /*approved_degrees ad = new approved_degrees();
             List<approved_degrees> app_deg = ad.approved_degrees_in();
             //ad.approved_degrees_update();
 
@@ -30,7 +30,7 @@ namespace MainProgram
             List<mycourses> mycourses = mc.mycourses_in();
 
             users u = new users();
-            List<users> users = u.users_in();
+            List<users> users = u.users_in();*/
 
 
 

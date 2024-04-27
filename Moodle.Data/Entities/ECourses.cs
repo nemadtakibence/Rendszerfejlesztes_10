@@ -1,5 +1,5 @@
 namespace Moodle.Data.Entities{
-    class Courses{
+    class ECourses{
         public int Id{get;set;}
         public string Name{get;set;}
         public string Code{get;set;}
