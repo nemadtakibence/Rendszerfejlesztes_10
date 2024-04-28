@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using System.Text.Json;
 using Moodle.Core;
 using Moodle.Data;
+using Microsoft.EntityFrameworkCore.Internal;
+using Moodle.Data.Entities;
+using Newtonsoft.Json;
 
 namespace Moodle.API.Controllers{
     [ApiController]
@@ -20,6 +23,31 @@ namespace Moodle.API.Controllers{
         {
             _hostingEnvironment = hostingEnvironment;
         }*/
+
+        [HttpGet("nextevent/")]
+        public async Task<IActionResult> NextEvent([FromBody] string? username){
+            if(username==null){
+                return BadRequest("Invalid request body.");
+            }
+            int userId = context.Users.ToList().Where(x => x.Username==username).First().Id;
+            var courseConn = context.MyCourses.ToList();
+            var allEvents = context.Events.ToList();
+            var myCourseId = new List<int>();
+            foreach(var el in courseConn){
+                if(el.User_Id==userId){
+                    myCourseId.Add(el.Course_Id);
+                }
+            }
+            var myEvents = new List<EEvents>();
+            foreach(var el in allEvents){
+                if(myCourseId.Contains(el.Course_Id)){
+                    myEvents.Add(el);
+                }
+            }
+            EEvents nearestEvent = myEvents.OrderBy(x => x.Date).First();
+            var jsonEvent = JsonConvert.SerializeObject(nearestEvent);
+            return Content(jsonEvent,"application/json");
+        }
 
         /*[HttpGet]
         public async Task<IActionResult> UpcomingEvent(){
