@@ -48,7 +48,10 @@ namespace Moodle.API.Controllers{
         }
 
         [HttpGet("my/")]
-        public async Task<IActionResult> ListMyCourses([FromBody] int userid){
+        public async Task<IActionResult> ListMyCourses([FromBody] int? userid){
+            if(userid==null){
+                return BadRequest("Invalid request body.");
+            }
             var myCourses = context.MyCourses.ToList().Where(x => x.User_Id==userid);
             var coursesList = context.Courses.ToList();
             var newList = new List<ECourses>();
