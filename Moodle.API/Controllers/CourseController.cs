@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
@@ -60,6 +61,21 @@ namespace Moodle.API.Controllers{
             }
             var coursesJson = JsonConvert.SerializeObject(newList);
             return Content(coursesJson, "application/json");
+        }
+
+        [HttpGet("participants/{code}")]
+        public async Task<IActionResult> ListCourseParticipants(string code){            
+            int courseId = context.Courses.ToList().Where(x => x.Code == code).First().Id;
+            var userList = new List<EUsers>();
+            var myCourses = new List<EMyCourses>();
+            var allUsers = context.Users.ToList();
+            foreach(var el in myCourses){
+                if(el.Course_Id==courseId){
+                    userList.Add(allUsers.Find(x => x.Id == el.User_Id));
+                }
+            }
+            var usersJson = JsonConvert.SerializeObject(userList);
+            return Content(usersJson, "application/json");
         }
         
         /*[HttpGet]
