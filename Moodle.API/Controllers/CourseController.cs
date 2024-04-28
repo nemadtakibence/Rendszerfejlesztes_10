@@ -37,6 +37,13 @@ namespace Moodle.API.Controllers{
             var coursesJson = JsonConvert.SerializeObject(coursesList);
             return Content(coursesJson, "application/json");
         }
+
+        [HttpGet("dept/{dept}")]
+        public async Task<IActionResult> ListCoursesByDept(string dept){
+            var coursesList = context.Courses.ToList().Where(x => x.Department == dept);
+            var coursesJson = JsonConvert.SerializeObject(coursesList);
+            return Content(coursesJson, "application/json");
+        }
         
         /*[HttpGet]
         public async Task<IActionResult> ListCourses()
