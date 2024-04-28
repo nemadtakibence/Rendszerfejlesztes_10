@@ -2,8 +2,10 @@ using System.Security.Authentication;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.EntityFrameworkCore.Storage.Json;
 using Moodle.Core;
 using Moodle.Data;
+using Newtonsoft.Json;
 
 namespace Moodle.API.Controllers{
     [ApiController]
@@ -21,6 +23,13 @@ namespace Moodle.API.Controllers{
         {
             _hostingEnvironment = hostingEnvironment;
         }*/
+
+        [HttpGet]
+        public async Task<IActionResult> ListCourses(){
+            var coursesList = context.Courses.ToList();
+            var coursesJson = JsonConvert.SerializeObject(coursesList);
+            return Content(coursesJson, "application/json");
+        }
 
         
         /*[HttpGet]
