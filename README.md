@@ -3,6 +3,6 @@
 
 # Beüzemelés módja
 A Moodle.API mappában:
-dotnet run
+dotnet run --launch-profile https VAGY a run.cmd megynitása
 
 A moodle.client mappából a testPage.html fájlt egy böngészőben meg kell nyitni
