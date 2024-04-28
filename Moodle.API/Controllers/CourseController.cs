@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore.Storage.Json;
 using Moodle.Core;
 using Moodle.Data;
+using Moodle.Data.Entities;
 using Newtonsoft.Json;
 
 namespace Moodle.API.Controllers{
@@ -42,6 +43,22 @@ namespace Moodle.API.Controllers{
         public async Task<IActionResult> ListCoursesByDept(string dept){
             var coursesList = context.Courses.ToList().Where(x => x.Department == dept);
             var coursesJson = JsonConvert.SerializeObject(coursesList);
+            return Content(coursesJson, "application/json");
+        }
+
+        [HttpGet("my/")]
+        public async Task<IActionResult> ListMyCourses([FromBody] int userid){
+            var myCourses = context.MyCourses.ToList().Where(x => x.User_Id==userid);
+            var coursesList = context.Courses.ToList();
+            var newList = new List<ECourses>();
+            foreach(var el in coursesList){
+                foreach(var el2 in myCourses){
+                    if(el.Id==el2.Course_Id){
+                        newList.Add(el);
+                    }
+                }
+            }
+            var coursesJson = JsonConvert.SerializeObject(newList);
             return Content(coursesJson, "application/json");
         }
         
