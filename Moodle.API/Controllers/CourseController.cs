@@ -86,13 +86,16 @@ namespace Moodle.API.Controllers{
         [HttpPut("enroll/{courseCode}")]
         //[Authorize(Roles = "Student")]
         public async Task<IActionResult> Enroll(string courseCode, [FromBody] string userName){
-            if(ACL.HasPermission(userName, Roles.Student)){
-                int courseId = context.Courses.ToList().Where(x => x.Code == courseCode).First().Id;
+            int courseId = context.Courses.ToList().Where(x => x.Code == courseCode).First().Id;
+            int userId = context.Users.ToList().SingleOrDefault(x => x.Username == userName).Id;
+            if(!context.MyCourses.ToList().Contains(new EMyCourses{Course_Id=courseId, User_Id=userId})){                
+                context.MyCourses.Add(new EMyCourses{Course_Id=courseId, User_Id=userId});
+                await context.SaveChangesAsync();
                 return Ok();
             }
             
             
-            return Unauthorized();
+            return BadRequest();
         }
 
         /*[HttpGet]
