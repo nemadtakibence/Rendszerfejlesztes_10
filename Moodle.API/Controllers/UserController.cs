@@ -24,11 +24,8 @@ namespace Moodle.API.Controllers{
             _hostingEnvironment = hostingEnvironment;
         }*/
 
-        [HttpGet("nextevent/")]
-        public async Task<IActionResult> NextEvent([FromBody] string? username){
-            if(username==null){
-                return BadRequest("Invalid request body.");
-            }
+        [HttpGet("nextevent/{username}")]
+        public async Task<IActionResult> NextEvent(string username){
             int userId = context.Users.ToList().Where(x => x.Username==username).First().Id;
             var courseConn = context.MyCourses.ToList();
             var allEvents = context.Events.ToList();

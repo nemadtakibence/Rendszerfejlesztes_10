@@ -13,7 +13,7 @@ namespace Moodle.API.Controllers{
     [ApiController]
     [Route("api/[controller]")]
     public class CourseController : ControllerBase{
-        private readonly MoodleDbContext context;
+        private MoodleDbContext context;
         //private readonly IWebHostEnvironment _hostingEnvironment;
 
         public CourseController(MoodleDbContext ctxt)
@@ -47,13 +47,10 @@ namespace Moodle.API.Controllers{
             return Content(coursesJson, "application/json");
         }
 
-        [HttpGet("my/")]
-        public async Task<IActionResult> ListMyCourses([FromBody] int? userid){
-            if(userid==null){
-                return BadRequest("Invalid request body.");
-            }
+        [HttpGet("my/{userid}")]
+        public async Task<IActionResult> ListMyCourses(int userid){            
             var myCourses = context.MyCourses.ToList().Where(x => x.User_Id==userid);
-            var coursesList = context.Courses.ToList();
+            var coursesList = context.Courses.ToList();            
             var newList = new List<ECourses>();
             foreach(var el in coursesList){
                 foreach(var el2 in myCourses){
@@ -69,8 +66,9 @@ namespace Moodle.API.Controllers{
         [HttpGet("participants/{code}")]
         public async Task<IActionResult> ListCourseParticipants(string code){            
             int courseId = context.Courses.ToList().Where(x => x.Code == code).First().Id;
+            //Console.WriteLine("participants végpontnál courseid: "+courseId);
             var userList = new List<EUsers>();
-            var myCourses = new List<EMyCourses>();
+            var myCourses = context.MyCourses.ToList();
             var allUsers = context.Users.ToList();
             foreach(var el in myCourses){
                 if(el.Course_Id==courseId){
