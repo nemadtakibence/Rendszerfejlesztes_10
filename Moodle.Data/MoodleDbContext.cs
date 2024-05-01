@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Moodle.Data.Entities;
+using Moodle.Core.Roles;
 
 namespace Moodle.Data{
     public class MoodleDbContext : DbContext{
@@ -16,7 +17,8 @@ namespace Moodle.Data{
         {            
             string projectRoot = Directory.GetParent(Environment.CurrentDirectory).FullName;
             string loginInfoPath = Path.Combine(projectRoot, "Moodle.Data/moodleDatabase.db");
-            optionsBuilder.UseSqlite(@"Data Source = " + loginInfoPath);
+            optionsBuilder.UseSqlite(@"Data Source = " + loginInfoPath);           
         }
+        
     }
 }

@@ -1,5 +1,6 @@
 using System.Buffers;
 using Moodle.Data;
+using Moodle.Core.Roles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,5 +30,21 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+/*using(MoodleDbContext context = new MoodleDbContext()){
+    int lectId = context.Degrees.SingleOrDefault(x => x.Name == "Oktató").Id;  
+            foreach(var user in context.Users){
+                if(user.Degree_Id==lectId){                    
+                    ACL.AddUser(user.Username);
+                    ACL.AddPermission(user.Username, Roles.Teacher);
+                }
+                else{
+                    ACL.AddUser(user.Username);
+                    ACL.AddPermission(user.Username, Roles.Student);
+                }
+                Console.WriteLine(user.Username);
+            }
+}*/
 
 app.Run();

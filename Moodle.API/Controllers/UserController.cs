@@ -18,6 +18,7 @@ namespace Moodle.API.Controllers{
         public UserController(MoodleDbContext ctxt)
         {
             context = ctxt;
+            ACL.InitializeList(ctxt);
         }
         /*public UserController(IWebHostEnvironment hostingEnvironment)
         {

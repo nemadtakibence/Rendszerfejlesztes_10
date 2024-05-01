@@ -1,10 +1,12 @@
 using System.Net.Http.Headers;
 using System.Security.Authentication;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore.Storage.Json;
 using Moodle.Core;
+using Moodle.Core.Roles;
 using Moodle.Data;
 using Moodle.Data.Entities;
 using Newtonsoft.Json;
@@ -19,6 +21,7 @@ namespace Moodle.API.Controllers{
         public CourseController(MoodleDbContext ctxt)
         {
             context=ctxt;
+            ACL.InitializeList(ctxt);
         }
 
         /*public CourseController(IWebHostEnvironment hostingEnvironment)
@@ -28,6 +31,7 @@ namespace Moodle.API.Controllers{
 
         [HttpGet]
         public async Task<IActionResult> ListCourses(){
+            //Console.WriteLine(ACL.GetPermission("URK2SP"));
             var coursesList = context.Courses.ToList();
             var coursesJson = JsonConvert.SerializeObject(coursesList);
             return Content(coursesJson, "application/json");
@@ -79,6 +83,18 @@ namespace Moodle.API.Controllers{
             return Content(usersJson, "application/json");
         }
         
+        [HttpPut("enroll/{courseCode}")]
+        //[Authorize(Roles = "Student")]
+        public async Task<IActionResult> Enroll(string courseCode, [FromBody] string userName){
+            if(ACL.HasPermission(userName, Roles.Student)){
+                int courseId = context.Courses.ToList().Where(x => x.Code == courseCode).First().Id;
+                return Ok();
+            }
+            
+            
+            return Unauthorized();
+        }
+
         /*[HttpGet]
         public async Task<IActionResult> ListCourses()
         {

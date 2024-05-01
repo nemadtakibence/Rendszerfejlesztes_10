@@ -12,4 +12,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
   </ItemGroup>
 
+<ItemGroup>
+    <ProjectReference Include="..\Moodle.Core\Moodle.Core.csproj" />
+</ItemGroup>
 </Project>
