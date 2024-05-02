@@ -8,7 +8,7 @@
 </head>
 <script src="mainPage.js"></script>
 <script src="api.js"></script>
-<body onLoad="showEvents()">
+<body onLoad="initialize()">
     <header>
         <h1>Moodle</h1>
     </header>
@@ -17,8 +17,10 @@
         <ul>
             <li><a href="#" onclick="showHome()">Kezdőlap</a></li>
             <li><a href="#" onclick="showCourses()">Kurzusok</a></li>
+            <li><input type="button" value="Kurzusok tanszék szerinti szűrése" onclick="showCoursesByDept()"> <input type="text" id="deptInput" placeholder="Tanszék neve..."></li>
+            <li><a href="#" onclick="showEvents()">Következő esemény</a></li>
             <li><a href="#" onclick="showMyCourses()">Saját kurzusok</a></li>
-            <li><a href="#" onclick="redirectLoginPage()">Kijelentkezés</a></li>
+            <li><a href="#" id="logoutButton">Kijelentkezés</a></li>
         </ul>
     </nav>
 
@@ -33,25 +35,7 @@
         </main>
 
         <div class="sidebar">
-            <div class="events" id="eventsContent">
-                <h2>Közelgő események</h2>
-                <div class="event">
-                    <h3>Esemény 1</h3>
-                    <p>Esemény 1 leírása</p>
-                </div>
-                <div class="event">
-                    <h3>Esemény 2</h3>
-                    <p>Esemény 2 leírása</p>
-                </div>
-                <div class="event">
-                    <h3>Esemény 3</h3>
-                    <p>Esemény 3 leírása</p>
-                </div>
-				<div class="event">
-                    <h3>Esemény 4</h3>
-                    <p>Esemény 4 leírása</p>
-                </div>
-            </div>
+            
         </div>
     </div>
 
@@ -60,3 +44,4 @@
     </footer>
 </body>
 </html>
+
