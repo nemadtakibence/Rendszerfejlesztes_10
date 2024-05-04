@@ -1,4 +1,6 @@
-function redirectMainPage() {
-	document.getElementById("loginButton").addEventListener("click", function() {window.location.href = "mainPage.html";});
-		
+function loginAction() {
+    var username = document.getElementById('usernameInput').value;
+	localStorage.setItem('username', username);
+    window.location.href = "mainPage.html";
 }
+

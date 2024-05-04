@@ -1,3 +1,16 @@
+var username = ""
+
+function initialize() {
+	redirectLoginPage();
+	getUsername();
+	
+}
+function getUsername(){
+	username = localStorage.getItem('username');
+	console.log("Logged in users username: " + username)
+
+}
+
 function showHome() {
     document.getElementById("mainContent").innerHTML = `
         <h2>Üdvözlünk a Moodle rendszerben</h2>
@@ -12,14 +25,86 @@ function showHome() {
 async function showCourses() {
     var textArea = document.getElementById("mainContent");
 
-    try{        
+    try {
         const data = await getData("Course");
         console.log(data);
-        textArea.textContent = JSON.stringify(data, null, 2);
-    }
-    catch(error){
+
+        var newcontent = 
+			`<div>
+                    <h3>Kurzusok:</h3>
+            `;
+        data.forEach(course => {
+            newcontent += `
+                <div>
+                    <h4>${course.Name}</h4>
+                    <p><strong>Neptun kód:</strong> ${course.Code}</p>
+                    <p><strong>Tanszék:</strong> ${course.Department}</p>
+                    <p><strong>Kredit:</strong> ${course.Credit}</p>
+                </div>
+            `;
+        });
+		newcontent += 
+			`</div>`;
+		textArea.innerHTML = newcontent;
+    } catch (error) {
         console.log("Adatbekérési hiba: " + error);
     }
+}
+
+async function showEvents() {
+	var textArea = document.getElementById("mainContent");
+	var newcontent = `
+        <h2>Következő esemény</h2>
+    `;
+	try {
+        const eventdata = await getData(`User/nextevent/${username}`);
+        console.log(eventdata);
+
+        newcontent += `
+                <div>
+                    <h4>${eventdata.Name}</h4>
+                    <p><strong>Kurzus(egyenlőre kód, nemtom hogy kéne nevet):</strong> ${eventdata.Course_Id}</p>
+                    <p><strong>Leírás:</strong> ${eventdata.Description}</p>
+                    <p><strong>Kredit:</strong> ${eventdata.Date}</p>
+                </div>
+            `;
+		textArea.innerHTML = newcontent;
+    } catch (error) {
+        console.log("Adatbekérési hiba: " + error);
+    }
+}
+
+async function showCoursesByDept(){
+    var textArea = document.getElementById("mainContent");
+    var dept = document.getElementById("deptInput").value;
+    try{
+        const data = await getData(`Course/dept/${dept}`);
+        console.log(data);
+        var newcontent = 
+			`<div>
+                    <h3>Kurzusok a(z) ${dept} tankszéken:</h3>
+            `;
+        data.forEach(course => {
+            newcontent += `
+                <div>
+                    <h4>${course.Name}</h4>
+                    <p><strong>Neptun kód:</strong> ${course.Code}</p>
+                    <p><strong>Tanszék:</strong> ${course.Department}</p>
+                    <p><strong>Kredit:</strong> ${course.Credit}</p>
+                </div>
+            `;
+        });
+		newcontent += 
+			`</div>`;
+		textArea.innerHTML = newcontent;
+    } catch (error) {
+        console.log("Adatbekérési hiba: " + error);
+    }
+}
+
+function redirectLoginPage() {
+	document.getElementById("logoutButton").addEventListener("click", function() {window.location.href = "index.html";});
+		
 }
 
 /*function showMyCourses() {
@@ -39,14 +124,3 @@ function redirectLoginPage() {
     document.getElementById("redirectButton").addEventListener("click", function() {window.location.href = "index.html";});
 
 }
-
-function showEvents() {
-    var newelement = `
-        <h2>Közelgő események</h2>
-    `;
-    for (let i = 1; i < 4; i++) {
-        newelement += '<div class="event"> <h3>Esemény ' + (i) + '</h3><p>Esemény leírása ' + (i) + '</p></div>';
-    }
-
-    document.getElementById("eventsContent").innerHTML = newelement;
-}*/
