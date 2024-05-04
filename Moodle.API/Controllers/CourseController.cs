@@ -10,6 +10,10 @@ using Moodle.Core.Roles;
 using Moodle.Data;
 using Moodle.Data.Entities;
 using Newtonsoft.Json;
+using Moodle.Core.Communication;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace Moodle.API.Controllers{
     [ApiController]
@@ -96,6 +100,58 @@ namespace Moodle.API.Controllers{
             
             
             return BadRequest();
+        }
+
+        [HttpPut("newcourse")]
+        public async Task<IActionResult> NewCourse([FromBody] NewCourse nc){
+            if(!ACL.HasPermission(nc.Username, Roles.Teacher)){
+                return Unauthorized("Invalid credentials");
+            }
+            string name = nc.Name;
+            string code = nc.Code;
+            string dept = nc.Department;
+            int credit = nc.Credit;
+            foreach(var el in context.Courses.ToList()){
+                if(el.Code == code || el.Name == name){
+                    return Conflict("Course already exists");
+                }
+            }
+            context.Courses.Add(new ECourses{Name=name, Code=code, Department=dept, Credit=credit});
+            await context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpDelete("dropcourse/{courseCode}")]
+        public async Task<IActionResult> DropCourse(string courseCode, [FromBody] string userName){
+            var user = context.Users.ToList().SingleOrDefault(x => x.Username == userName);
+            var course = context.Courses.ToList().SingleOrDefault(x => x.Code==courseCode);
+            int userId = user.Id;
+            int courseId = course.Id;
+            var recordToDrop = context.MyCourses.ToList().SingleOrDefault(x => x.Course_Id==courseId && x.User_Id==userId);
+            if(recordToDrop==null){
+                return Conflict("The course is not in your list of courses.");
+            }
+            context.MyCourses.Remove(recordToDrop);
+            await context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPut("newevent")]
+        public async Task<IActionResult> NewEvent([FromBody] NewEvent ne){
+            if(!ACL.HasPermission(ne.Username, Roles.Teacher)){
+                return Unauthorized("Invalid credentials");
+            }
+            var course = context.Courses.ToList().SingleOrDefault(x => x.Name == ne.CourseName);
+            if(course==null){
+                return Conflict("No such course in database.");
+            }
+            int courseId = course.Id;
+            if(ne.Name==null || ne.Date==null){
+                return BadRequest("Name and/or date values are null.");
+            }
+            context.Events.Add(new EEvents{Course_Id=courseId, Name=ne.Name, Description=ne.Desc, Date=ne.Date});
+            await context.SaveChangesAsync();
+            return Ok();
         }
 
         /*[HttpGet]
