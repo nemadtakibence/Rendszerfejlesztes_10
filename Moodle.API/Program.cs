@@ -1,6 +1,6 @@
 using System.Buffers;
 using Moodle.Data;
-using Moodle.Core.Roles;
+using Moodle.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +24,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors(options => {
     options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 });
+
+app.UseMiddleware<TokenMiddleware>(builder.Configuration);
 
 app.UseHttpsRedirection();
 
