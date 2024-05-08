@@ -1,3 +1,9 @@
+const socket = new WebSocket("ws://localhost:5096");
+
+async function webSocket(){
+
+}
+
 async function test(){
     var textArea = document.getElementById("kimenet");
     try{

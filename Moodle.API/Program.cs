@@ -2,6 +2,8 @@ using System.Buffers;
 using Moodle.Data;
 using Moodle.API.Middlewares;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -33,6 +35,26 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseWebSockets();
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/ws")
+    {
+        if (context.WebSockets.IsWebSocketRequest)
+        {
+            using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+        }
+        else
+        {
+            context.Response.StatusCode = StatusCodes.Status400BadRequest;
+        }
+    }
+    else
+    {
+        await next(context);
+    }
+
+});
 
 /*using(MoodleDbContext context = new MoodleDbContext()){
     int lectId = context.Degrees.SingleOrDefault(x => x.Name == "Oktató").Id;  
