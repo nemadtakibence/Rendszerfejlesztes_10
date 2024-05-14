@@ -1,6 +1,7 @@
 using System.Buffers;
 using Moodle.Data;
 using Moodle.API.Middlewares;
+using Moodle.API.WebSocketServer;
 
 
 
@@ -35,7 +36,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseWebSockets();
+try
+{
+    Task.Run(async () =>
+    {
+        var webSocketServer = new WebSocketServer("127.0.0.1", 8000);
+        await webSocketServer.Run();
+    });
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Error starting WebSocket server: {ex.Message}");
+}
+
+/*app.UseWebSockets();
 app.Use(async (context, next) =>
 {
     if (context.Request.Path == "/ws")
@@ -54,7 +68,7 @@ app.Use(async (context, next) =>
         await next(context);
     }
 
-});
+});*/
 
 /*using(MoodleDbContext context = new MoodleDbContext()){
     int lectId = context.Degrees.SingleOrDefault(x => x.Name == "Oktató").Id;  
