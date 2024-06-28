@@ -79,6 +79,7 @@ namespace Moodle.API.WebSocketServer
                             if (client.State == WebSocketState.Open)
                             {
                                 await client.SendAsync(Encoding.UTF8.GetBytes($"{username}: {messageContent}"), WebSocketMessageType.Text, true, CancellationToken.None);
+                                Console.WriteLine("Broadcast message to client");
                             }
                         }
                     }
@@ -112,6 +113,9 @@ namespace Moodle.API.WebSocketServer
                 // Add the WebSocket to the clients dictionary
                 _clients[clientId] = webSocket;
 
+                // Log client connection
+                Console.WriteLine($"Client connected: {clientId}");
+
                 // Start a new task to handle messages from this WebSocket connection
                 Task receiveTask = ReceiveMessagesAsync(webSocket, cancellationTokenSource.Token);
 
@@ -123,6 +127,7 @@ namespace Moodle.API.WebSocketServer
 
                 // Close the WebSocket connection
                 await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "WebSocket connection closed", CancellationToken.None);
+                Console.WriteLine($"Client disconnected: {clientId}");
             }
             catch (WebSocketException ex)
             {

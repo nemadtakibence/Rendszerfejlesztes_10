@@ -1,0 +1,208 @@
+[
+  {
+    "ContainingType": "Moodle.API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginData",
+        "Type": "Moodle.Core.Communication.LoginData",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "ListCourses",
+    "RelativePath": "api/Course",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "ListCoursesByDept",
+    "RelativePath": "api/Course/dept/{dept}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dept",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "DropCourse",
+    "RelativePath": "api/Course/dropcourse/{courseCode}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "courseCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "Enroll",
+    "RelativePath": "api/Course/enroll/{courseCode}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "courseCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "ListCoursesByCode",
+    "RelativePath": "api/Course/id/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "ListMyCourses",
+    "RelativePath": "api/Course/my/{username}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "NewCourse",
+    "RelativePath": "api/Course/newcourse",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nc",
+        "Type": "Moodle.Core.Communication.NewCourse",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "NewEvent",
+    "RelativePath": "api/Course/newevent",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ne",
+        "Type": "Moodle.Core.Communication.NewEvent",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.CourseController",
+    "Method": "ListCourseParticipants",
+    "RelativePath": "api/Course/participants/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.TestController",
+    "Method": "GetJsonFile",
+    "RelativePath": "api/Test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Moodle.API.Controllers.UserController",
+    "Method": "NextEvent",
+    "RelativePath": "api/User/nextevent/{username}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebSocketController",
+    "Method": "Get",
+    "RelativePath": "ws",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
