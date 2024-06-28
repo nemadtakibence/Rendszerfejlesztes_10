@@ -1,0 +1,33 @@
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.deps.json
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.dll
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.pdb
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.AssemblyInfoInputs.cache
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.AssemblyInfo.cs
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.csproj.CoreCompileInputs.cache
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.dll
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\refint\Moodle.Core.dll
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.pdb
+D:\_Downloads\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\ref\Moodle.Core.dll
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.deps.json
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.dll
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.pdb
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.AssemblyInfoInputs.cache
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.AssemblyInfo.cs
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.csproj.CoreCompileInputs.cache
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.dll
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\refint\Moodle.Core.dll
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.pdb
+C:\Users\-\Documents\Prog\new\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\ref\Moodle.Core.dll
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.deps.json
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.dll
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\bin\Debug\net8.0\Moodle.Core.pdb
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.AssemblyInfoInputs.cache
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.AssemblyInfo.cs
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.csproj.CoreCompileInputs.cache
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.dll
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\refint\Moodle.Core.dll
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\Moodle.Core.pdb
+C:\Users\-\Downloads\2\Rendszerfejlesztes_10-main (1)\Rendszerfejlesztes_10-main\Moodle.Core\obj\Debug\net8.0\ref\Moodle.Core.dll
