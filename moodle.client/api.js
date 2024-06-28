@@ -1,64 +1,94 @@
 var defaultUrl = "http://localhost:5096/api/";
 
 async function postData(url = "", data = {}, needAuth = true) {
-    // Default options are marked with *
+    const headers = {
+        "Content-Type": "application/json"
+    };
+    if (needAuth) {
+        const token = localStorage.getItem('token');
+        if (token) {
+			headers['Authorization'] = `Bearer ${token}`;
+        }
+    }
     const response = await fetch(defaultUrl + url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, *cors, same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json"
-        },
-        redirect: "follow", // manual, *follow, error
-        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        //body: testJSON(data) ? data : JSON.stringify(data) // body data type must match "Content-Type" header
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: headers,
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data)
     });
     if (response.status === 401 || response.status === 403) {
         logout();
     }
     try {
-        return await response.json(); // parses JSON response into native JavaScript objects
+        return await response.json();
     } catch (error) {
         console.error("Error parsing JSON:", error);
-        return {}; // or handle the error as per your requirement
+        return {};
     }
 }
 
-async function getData(url = "") {
-    // Default options are marked with *
+async function getData(url = "", needAuth = true) {
+    const headers = {
+        "Content-Type": "application/json"
+    };
+    if (needAuth) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+    }
     const response = await fetch(defaultUrl + url, {
-        method: "GET", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, *cors, same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json"
-        },
-        redirect: "follow", // manual, *follow, error
-        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        //body: testJSON(data) ? data : JSON.stringify(data)
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: headers,
+        redirect: "follow",
+        referrerPolicy: "no-referrer"
     });
     if (response.status === 401 || response.status === 403) {
         logout();
     }
     console.log(response);
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response.json();
 }
 
-function testJSON(text) {
-    if (typeof text !== "string") {
-        return false;
+async function putData(url = "", data = {}, needAuth = true) {
+    const headers = {
+        "Content-Type": "application/json"
+    };
+    if (needAuth) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+    }
+    const response = await fetch(defaultUrl + url, {
+        method: "PUT",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: headers,
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data)
+    });
+    if (response.status === 401 || response.status === 403) {
+        logout();
     }
     try {
-        JSON.parse(text);
-        return true;
+        return await response.json();
     } catch (error) {
-        return false;
+        console.error("Error parsing JSON:", error);
+        return {};
     }
 }
 
 function logout() {
     localStorage.clear();
-    window.location.href = "login.html";
+    //window.location.href = "index.html";
 }

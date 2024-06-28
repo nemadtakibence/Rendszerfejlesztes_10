@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moodle</title>
+    <style>
+        .fixed-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            /*background-color: #ffffff;*/
+            text-align: right;
+            /*padding: 10px 0;*/
+        }
+
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <script src="mainPage.js"></script>
 <script src="api.js"></script>
 <body onLoad="initialize()">
+    <main>
+        <div class="container">
+            <h2 id="webSocketResponse"></h2>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="webSocket.js"></script>
     <header>
         <h1>Moodle</h1>
     </header>
@@ -39,7 +58,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="fixed-bottom">
         &copy; 2024 Moodle
     </footer>
 </body>

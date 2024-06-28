@@ -62,6 +62,7 @@ public static class ACL
                     ACL.AddPermission(user.Username, Roles.Student);
                 }
                 Console.WriteLine(user.Username);
+                Console.WriteLine(ACL.accessControlList.ToString);
             }
             initialized=true;
         }
