@@ -138,12 +138,12 @@ async function enrollStudents(courseCode) {
         const data = putData(`Course/enroll/${courseCode}/${username}`);       
         console.log(data);
 
-        newcontent = `
+        successnewcontent = `
             <div>
                 <h2>Sikeres jelentkezés.</h2>
             </div>
         `;
-        document.getElementById("mainContent").innerHTML = newcontent
+        document.getElementById("mainContent").innerHTML = successnewcontent
     } catch (error) {
         console.log("Adatbekérési hiba: " + error);
     }    
