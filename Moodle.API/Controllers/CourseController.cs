@@ -55,8 +55,14 @@ namespace Moodle.API.Controllers{
             return Content(coursesJson, "application/json");
         }
 
-        [HttpGet("my/{userid}")]
-        public async Task<IActionResult> ListMyCourses(int userid){            
+        [HttpGet("my/{username}")]
+        public async Task<IActionResult> ListMyCourses(string username){
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            if (user == null)
+            {
+                return NotFound(); // Handle case where user with the specified username is not found
+            }
+            int userid = user.Id;
             var myCourses = context.MyCourses.ToList().Where(x => x.User_Id==userid);
             var coursesList = context.Courses.ToList();            
             var newList = new List<ECourses>();
@@ -86,21 +92,49 @@ namespace Moodle.API.Controllers{
             var usersJson = JsonConvert.SerializeObject(userList);
             return Content(usersJson, "application/json");
         }
+
+        [HttpPut("enroll/{courseCode}/{username}")]
         
-        [HttpPut("enroll/{courseCode}")]
-        //[Authorize(Roles = "Student")]
-        public async Task<IActionResult> Enroll(string courseCode, [FromBody] string userName){
-            int courseId = context.Courses.ToList().Where(x => x.Code == courseCode).First().Id;
-            int userId = context.Users.ToList().SingleOrDefault(x => x.Username == userName).Id;
-            if(!context.MyCourses.ToList().Contains(new EMyCourses{Course_Id=courseId, User_Id=userId})){                
-                context.MyCourses.Add(new EMyCourses{Course_Id=courseId, User_Id=userId});
-                await context.SaveChangesAsync();
-                return Ok();
+        public async Task<IActionResult> Enroll(string courseCode, string userName)
+        {
+            Console.WriteLine(courseCode);
+            Console.WriteLine(userName);
+            var course = context.Courses.SingleOrDefault(x => x.Code == courseCode);
+            if (course == null)
+            {
+                return BadRequest("Invalid course code");
             }
-            
-            
-            return BadRequest();
+
+            var user = context.Users.SingleOrDefault(x => x.Username == userName);
+            if (user == null)
+            {
+                return BadRequest("Invalid user name");
+            }
+            int courseId = context.Courses.SingleOrDefault(x => x.Code == courseCode).Id;
+            int degreeId = user.Degree_Id;
+            int userId = user.Id;
+
+            var degreeList = context.Approved_Degrees.ToList().Where(x => x.Degree_Id == degreeId);
+            var approvedDegreeCount = degreeList.Count(x => x.Course_Id == courseId);
+            if (approvedDegreeCount > 0)
+            {
+                var existingCourse = context.MyCourses.Any(x => x.Course_Id == course.Id && x.User_Id == userId);
+                if (!existingCourse)
+                {
+                    context.MyCourses.Add(new EMyCourses { Course_Id = course.Id, User_Id = userId });
+                    await context.SaveChangesAsync();
+                    return Ok();
+            }
+            else
+            {
+                return BadRequest("User is already enrolled in this course");
+            }
         }
+            else
+            {
+                return BadRequest("Unauthorized: Can't enroll in this course with your degree");
+            }
+}
 
         [HttpPut("newcourse")]
         public async Task<IActionResult> NewCourse([FromBody] NewCourse nc){

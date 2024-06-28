@@ -30,16 +30,26 @@ namespace Moodle.API.Controllers{
             ACL.InitializeList(ctxt);
         }
 
-        [HttpPost("login")]
+        [HttpPost]
+        [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginData loginData){
             if(loginData==null){
-                return BadRequest("Invalid request body");
+                return BadRequest(new { message = "Invalid request body" });
             }
             var user = context.Users.SingleOrDefault(x => x.Username==loginData.Username);
-            if(user==null){
-                return Unauthorized("Invalid credentials");
+            if (user==null){
+                return Unauthorized(new { message = "Invalid credentials- user==null" });
             }
-            if(Password.VerifyPassword(user.Username, user.Password, loginData.Password)){
+            Console.WriteLine("user username=");
+            Console.WriteLine(user.Username);
+            Console.WriteLine("user password=");
+            Console.WriteLine(user.Password);
+            Console.WriteLine("user tostring=");
+            Console.WriteLine(user.ToString);
+            Console.WriteLine("logindata password=");
+            Console.WriteLine(loginData.Password);
+            if (Password.VerifyPassword(user.Username, user.Password, loginData.Password)){
+                Console.WriteLine("Bennt van a verifypassword if-jeben");
                 bool oktato=false;
                 if(user.Degree_Id==3){ //HARDCODE
                     oktato=true;
@@ -50,18 +60,21 @@ namespace Moodle.API.Controllers{
                     new Claim(ClaimTypes.GivenName, user.Username),
                     new Claim(ClaimTypes.Name, user.Name)
                 };
+                if (config["Jwt:SecretKey"] == null){
+                    return BadRequest(new { message = "JWT Secret key is null" });
+                }
                 var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(config["Jwt:SecretKey"]));
                 var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(
-                    issuer: config["Jwt:Issuer"],
-                    audience: config["Jwt:Audience"],
+                    issuer: config["Jwt:ValidIssuer"],
+                    audience: config["Jwt:ValidAudience"],
                     claims: claimsArr,
-                    expires: DateTime.UtcNow.AddSeconds(60),
+                    expires: DateTime.UtcNow.AddSeconds(200),
                     signingCredentials: credentials);
                 var jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
                 return Ok(new {message="Login successful", userName = user.Username, userId = user.Id, isOktato = oktato, token = jwtToken});
             }
-            return Unauthorized("Invalid credentials");
+            return Unauthorized(new { message = "Invalid credentials" });
 
         }
 

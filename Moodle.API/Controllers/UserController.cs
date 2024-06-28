@@ -43,7 +43,7 @@ namespace Moodle.API.Controllers{
                 }
             }
             EEvents nearestEvent = myEvents.OrderBy(x => x.Date).First();
-            var jsonEvent = JsonConvert.SerializeObject(nearestEvent);
+            var jsonEvent = JsonConvert.SerializeObject(new List<EEvents> { nearestEvent });
             return Content(jsonEvent,"application/json");
         }
 
